@@ -31,7 +31,7 @@ const sessionConfig = {
 const server = express();
 
 server.use(express.static(path.join(__dirname, '../client')));
-server.use(sessionConfig)
+server.use(session(sessionConfig))
 server.use(helmet());
 server.use(express.json());
 
