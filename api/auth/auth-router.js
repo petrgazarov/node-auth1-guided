@@ -26,7 +26,9 @@ router.post('/login', (req, res, next) => {
   User.findBy({ username })
     .then(([user]) => {
       if (!user) {
-        
+        next({
+          status(404)
+        })
       }
     })
     .catch(err => {
