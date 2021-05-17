@@ -8,6 +8,7 @@ const authRouter = require('./auth/auth-router.js');
 const server = express();
 
 server.use(express.static(path.join(__dirname, '../client')));
+server.use
 server.use(helmet());
 server.use(express.json());
 
