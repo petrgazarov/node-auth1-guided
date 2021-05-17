@@ -7,7 +7,7 @@ router.post('/register', (req, res, next) => {
 
   const hash = bcrypt.hashSync(
     password, // the string we're hashing
-    14,        // 2 ^ 8 rounds of hashing
+    16,        // 2 ^ 8 rounds of hashing
   )
 
   User.add({ username, password: hash })
