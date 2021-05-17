@@ -18,6 +18,7 @@ const sessionConfig = {
   rolling: true,
   resave: false, // some data stores need this set to true
   saveUninitialized: false, // privacy implications, if false no cookie is set on client unless the req.session is changed
+  // ALLOWS TO SAVE THE SESSIONS TO THE DB
   store: new KnexSessionStore({
     knex: require('../database/db-config.js'), // configured instance of knex
     tablename: 'sessions', // table that will store sessions inside the db, name it anything you want
@@ -30,7 +31,7 @@ const sessionConfig = {
 const server = express();
 
 server.use(express.static(path.join(__dirname, '../client')));
-server.use(ses)
+server.use(sessionConfig)
 server.use(helmet());
 server.use(express.json());
 
