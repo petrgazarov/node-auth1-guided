@@ -47,9 +47,13 @@ router.post('/login', (req, res, next) => {
 })
 router.get('/logout', (req, res, next) => {
   if (req.session.user) {
-
+    req.session.destroy(err => {
+      
+    })
   } else {
-    
+    res.json({
+      message: 'do I know you?'
+    })
   }
 })
 router.use((err, req, res, next) => {
