@@ -48,7 +48,11 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
   if (req.session.user) {
     req.session.destroy(err => {
-      
+      if (err) {
+        res.json({ message: `you can not leave`})
+      } else {
+        
+      }
     })
   } else {
     res.json({
