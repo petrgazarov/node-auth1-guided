@@ -49,9 +49,12 @@ router.get('/logout', (req, res, next) => {
   if (req.session.user) {
     req.session.destroy(err => {
       if (err) {
-        res.json({ message: `you can not leave`})
+        res.json({
+          message: `you can not leave, ${req.session.use.username}`,
+        })
       } else {
-        
+        res.json({
+          message: `thanks for playing, ${req.session.use.username}`})
       }
     })
   } else {
