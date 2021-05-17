@@ -54,6 +54,7 @@ router.get('/logout', (req, res, next) => {
           message: `you can not leave, ${username}`,
         })
       } else {
+        // set a cookie manually 'monkey'
         res.json({
           message: `thanks for playing, ${username}`
         })
