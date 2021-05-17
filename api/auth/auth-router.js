@@ -10,6 +10,9 @@ router.post('/register', (req, res, next) => {
     8,        // 2 ^ 8 rounds of hashing
   )
 
+  User.add({ username, password: hash})
+
+
 })
 router.post('/login', (req, res, next) => {
   res.json({ message: 'login' })
