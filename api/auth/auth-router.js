@@ -7,7 +7,7 @@ router.post('/register', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   res.json({ message: 'login' })
 })
-router.verb('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   res.json({ message: 'logout' })
 })
 
