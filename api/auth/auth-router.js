@@ -27,6 +27,9 @@ router.post('/login', (req, res, next) => {
     .then(([user]) => {
       console.log(user)
     })
+    .catch(err => {
+      next(err)
+    })
 })
 router.get('/logout', (req, res, next) => {
   res.json({ message: 'logout' })
