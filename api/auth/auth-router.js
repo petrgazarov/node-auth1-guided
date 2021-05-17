@@ -21,7 +21,8 @@ router.post('/register', (req, res, next) => {
     })
 })
 router.post('/login', (req, res, next) => {
-  res.json({ message: 'login' })
+  const { username, password } = req.body
+  // pull out the username from db
 })
 router.get('/logout', (req, res, next) => {
   res.json({ message: 'logout' })
