@@ -10,7 +10,10 @@ router.post('/register', (req, res, next) => {
     8,        // 2 ^ 8 rounds of hashing
   )
 
-  User.add({ username, password: hash})
+  User.add({ username, password: hash })
+    .then(user => {
+      res.
+    })
 
 
 })
