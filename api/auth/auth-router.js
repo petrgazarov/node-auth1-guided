@@ -12,10 +12,13 @@ router.post('/register', (req, res, next) => {
 
   User.add({ username, password: hash })
     .then(user => {
-      res.
+      res.status(201).json({
+        message: `We are happy to have you, ${user.username}`
+      })
     })
+    .catch(err => {
 
-
+    })
 })
 router.post('/login', (req, res, next) => {
   res.json({ message: 'login' })
