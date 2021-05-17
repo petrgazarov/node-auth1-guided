@@ -46,7 +46,11 @@ router.post('/login', (req, res, next) => {
     })
 })
 router.get('/logout', (req, res, next) => {
-  res.json({ message: 'logout' })
+  if (req.session.user) {
+
+  } else {
+    
+  }
 })
 router.use((err, req, res, next) => {
   res.status(err.status || 500).json({
