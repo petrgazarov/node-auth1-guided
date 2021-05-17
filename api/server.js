@@ -10,6 +10,7 @@ server.use(express.static(path.join(__dirname, '../client')));
 server.use(helmet());
 server.use(express.json());
 
+server.use('/api/auth', authRouter)
 server.use('/api/users', usersRouter);
 
 server.get('/', (req, res) => {
