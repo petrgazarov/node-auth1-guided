@@ -3,7 +3,13 @@ const router = require("express").Router();
 const Users = require("./users-model.js");
 
 const protected = (req, res, next) => {
-  
+  if (req.session.user) {
+    next()
+  } else {
+    next({
+      message: 'You can not '
+    })
+  }
 }
 
 router.get("/", protected, (req, res, next) => {
