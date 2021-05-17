@@ -7,6 +7,10 @@ const KnexSessionStore = require('connect-session-knex')(session);
 const usersRouter = require('./users/users-router.js');
 const authRouter = require('./auth/auth-router.js');
 
+const monstsessioerConfig = {
+
+}
+
 const server = express();
 
 server.use(express.static(path.join(__dirname, '../client')));
