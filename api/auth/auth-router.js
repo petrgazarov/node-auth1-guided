@@ -27,8 +27,11 @@ router.post('/login', (req, res, next) => {
     .then(([user]) => {
       if (!user) {
         next({
-          status(404)
+          status: 401,
+          message: `Invalid credentials`
         })
+      } else {
+        
       }
     })
     .catch(err => {
