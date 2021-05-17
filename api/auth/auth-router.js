@@ -31,7 +31,9 @@ router.post('/login', (req, res, next) => {
           message: `Invalid credentials`
         })
       } else {
-        if (bcrypt.compare)
+        if (bcrypt.compareSync(password, user.password)) {
+
+        }
       }
     })
     .catch(err => {
