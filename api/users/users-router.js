@@ -7,7 +7,7 @@ const protected = (req, res, next) => {
     next()
   } else {
     next({
-      message: 'You can not '
+      message: 'You shall not pass!'
     })
   }
 }
