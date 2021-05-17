@@ -25,20 +25,13 @@ router.post('/login', (req, res, next) => {
 
   User.findBy({ username })
     .then(([user]) => {
-      if (!user) {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        // good
+      } else {
         next({
           status: 401,
           message: `Invalid credentials`
         })
-      } else {
-        if (bcrypt.compareSync(password, user.password)) {
-          // good
-        } else {
-          next({
-            status: 401,
-            message: `Invalid credentials`
-          })
-        }
       }
     })
     .catch(err => {
