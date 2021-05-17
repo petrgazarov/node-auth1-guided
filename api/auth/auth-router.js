@@ -28,8 +28,8 @@ router.post('/login', (req, res, next) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         // there should be a req.session we can write to
         // if we change the req.session object
-        // 1- the session gets persisted
-        // 2- the response includes a SET-COOKIE with the session id
+        //  1- the session gets persisted
+        //  2- the response includes a SET-COOKIE with the session id
         req.session.user = user
         res.json({
           message: `Welcome back, ${user.username}`,
