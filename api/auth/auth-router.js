@@ -22,7 +22,11 @@ router.post('/register', (req, res, next) => {
 })
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body
-  // pull out the username from db
+
+  User.findBy({ username })
+    .then(([user]) => {
+      
+    })
 })
 router.get('/logout', (req, res, next) => {
   res.json({ message: 'logout' })
