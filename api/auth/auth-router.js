@@ -26,6 +26,12 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
   res.json({ message: 'logout' })
 })
-
+router.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    customMessage: 'something went wrong in auth router',
+    message: err.message,
+    stack: err.stack,
+  })
+})
 
 module.exports = router;
