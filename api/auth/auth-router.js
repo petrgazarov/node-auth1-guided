@@ -3,6 +3,20 @@ const router = require("express").Router();
 
 const User = require("../users/users-model.js");
 
+router.post('/register', (req, res, next) => {
+  const { username, password } = req.body;
+
+  // 1. Calculate the hash of the password
+  // 2. Save the hash to the db
+
+  const passwordHash = bcrypt.hashSync(password, 8);
+
+  User
+    .add({ username, password: passwordHash })
+    .then(({ username }) => res.status(201).json({ message: `Great to have you with us, ${username}`}))
+    .catch(next);
+});
+
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body;
 
@@ -23,10 +37,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   if (req.session.user) {
-    // 1. Hold on to username
-    // 2. Destroy session
-    // 3. Handle possible error in database call
-    // 4. If successful, send back a custom message
+    const { username } = req.session.user;
 
     req.session.destroy(err => {
       if (err) {
