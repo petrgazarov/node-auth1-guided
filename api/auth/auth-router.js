@@ -11,7 +11,7 @@ router.post('/login', (req, res, next) => {
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        res.session.user = user;
+        req.session.user = user;
 
         res.json({ message: `Welcome back ${user.username}, have a cookie!` });
       } else {
