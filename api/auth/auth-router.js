@@ -21,4 +21,23 @@ router.post('/login', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/logout', (req, res) => {
+  if (req.session.user) {
+    // 1. Hold on to username
+    // 2. Destroy session
+    // 3. Handle possible error in database call
+    // 4. If successful, send back a custom message
+
+    req.session.destroy(err => {
+      if (err) {
+        res.json({ message: `You can never leave, ${username}` });
+      } else {
+        res.json({ message: `Bye ${username}, thanks for playing` });
+      }
+    });
+  } else {
+    res.json({ message: 'Excuse me, do I know you?'});
+  }
+});
+
 module.exports = router;
