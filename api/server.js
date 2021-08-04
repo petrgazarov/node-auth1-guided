@@ -5,6 +5,7 @@ const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session);
 
 const usersRouter = require('./users/users-router.js');
+const authRouter = require('./auth/auth-router.js');
 
 const server = express();
 
@@ -35,6 +36,7 @@ const sessionConfig = {
 server.use(session(sessionConfig));
 
 server.use('/api/users', usersRouter);
+server.use('/api/auth', authRouter);
 
 server.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
