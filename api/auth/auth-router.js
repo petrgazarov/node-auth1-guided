@@ -4,7 +4,7 @@ const router = require("express").Router();
 const User = require("../users/users-model.js");
 
 router.post('/login', (req, res) => {
-  console.log('req.session', req.session);
+  req.session.something = 123;
   
   res.json({});
 });
