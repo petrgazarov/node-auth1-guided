@@ -3,12 +3,8 @@ const router = require("express").Router();
 
 const User = require("../users/users-model.js");
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
   const { username, password } = req.body;
-
-  // 1. Check if there exists a user with this username
-  // 2. If yes, verify that password matches. If it does, save the session and set the cookie. If it does not, send a 401
-  // 3. If no, send a 401
 
   User
     .findBy({ username })
@@ -21,9 +17,8 @@ router.post('/login', (req, res) => {
       } else {
         res.status(401).json({ message: 'Invalid credentials' });
       }
-    });
-  
-  res.json({});
+    })
+    .catch(next);
 });
 
 module.exports = router;
