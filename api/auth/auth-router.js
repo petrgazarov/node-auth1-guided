@@ -34,4 +34,20 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
+router.get('/logout', (req, res, next) => {
+  if (req.session.user) {
+    const { username } = req.session.user;
+    
+    req.session.destroy(err => {
+      if (err) {
+        next(err);
+      } else {
+        res.json({ message: `Bye, ${username}` });
+      }
+    });
+  } else {
+    res.status(400).json({ message: 'Do I know you?' });
+  }
+});
+
 module.exports = router;
