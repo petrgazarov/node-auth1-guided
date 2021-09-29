@@ -21,10 +21,11 @@ router.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
-    const [existingUser] = await findBy({ username });
+    const [user] = await findBy({ username });
 
-    if (existingUser && bcrypt.compareSync(password, existingUser.password)) {
-      // TODO
+    if (user && bcrypt.compareSync(password, user.password)) {
+      req.session.user = user;
+
       res.json({ message: 'Success' });
     } else {
       res.status(401).json({ message: 'Bad credentials!' });
