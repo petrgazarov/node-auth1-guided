@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const { json } = require('express');
 const router = require('express').Router();
 const { add, findBy } = require('../users/users-model');
 
